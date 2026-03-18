@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SRMAS - Satellite Risk Monitoring & Alert System</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div>
+                <p class="brand">SRMAS</p>
+                <h1>Satellite Risk Monitoring & Alert System</h1>
+                <p class="subtitle">Live telemetry, anomaly detection, and action recommendations</p>
+            </div>
+            <div class="health-card">
+                <p class="small">Satellite Health</p>
+                <h2 id="healthStatus">--</h2>
+                <p id="riskLevel" class="risk"></p>
+            </div>
+        </header>
+
+        <section class="summary-grid">
+            <div class="card card-large">
+                <div class="card-header"><h3>Current Risk</h3><span id="riskBadge" class="badge">--</span></div>
+                <div id="alertCard" class="alert-card alert-success">
+                    <div class="alert-title" id="alertTitle">Initializing...</div>
+                    <div id="alertMessage">Fetching telemetry data every 2.5 seconds</div>
+                </div>
+                <div class="stat-row"><span>Action:</span><strong id="recommendedAction">--</strong></div>
+                <div class="stat-row"><span>What Happened:</span><strong id="whatHappened">--</strong></div>
+                <div class="stat-row"><span>Why:</span><strong id="why">--</strong></div>
+            </div>
+
+            <div class="card card-small">
+                <h3>Latest Telemetry</h3>
+                <div class="metrics-grid">
+                    <div class="metric"><div>Altitude</div><div id="altitudeVal">-- km</div></div>
+                    <div class="metric"><div>Velocity</div><div id="velocityVal">-- km/s</div></div>
+                    <div class="metric"><div>Signal</div><div id="signalVal">-- %</div></div>
+                    <div class="metric"><div>Drift</div><div id="driftVal">--°</div></div>
+                    <div class="metric"><div>Risk Score</div><div id="scoreVal">--</div></div>
+                    <div class="metric"><div>Anomaly</div><div id="anomalyVal">--</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="charts-row">
+            <div class="card"><h3>Altitude</h3><canvas id="altitudeChart"></canvas></div>
+            <div class="card"><h3>Velocity</h3><canvas id="velocityChart"></canvas></div>
+            <div class="card"><h3>Signal Strength</h3><canvas id="signalChart"></canvas></div>
+            <div class="card"><h3>Orbital Drift</h3><canvas id="driftChart"></canvas></div>
+        </section>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
